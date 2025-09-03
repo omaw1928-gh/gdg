@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>To-do Lists</title></head>
+    <style>
+         body {
+        background-color: aqua;
+        background-size: cover;
+        background-position: center;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+    }
+    main {
+        background-color: rgb(231, 236, 249);
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+    }
+    </style>
+<body>
+    <main>
+    <font size="7", face="Lucida Handwriting">
+    <h1 align="Center"><B><U>To-do List</U></B></h1></font>
+    <br>
+    <marquee><font face='Chiller', size="7">Taskify yousr day! </font></marquee>
+    <section>
+    <div align="Center">
+    <h2><Font size='6'>Tasks</Font></h2>
+    <input type="text" id="taskInput" placeholder="Enter a new task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+    </div>
+    </section>
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskList = document.getElementById('taskList');
+            const taskText = taskInput.value.trim();
+            if (taskText !== '') {
+                const listItem = document.createElement('li');
+                listItem.textContent = taskText + ' ';
+                const deleteButton = document.createElement('button');
+                const doneButton = document.createElement('button');
+                doneButton.textContent = 'Done';
+                doneButton.onclick = function() {
+                    listItem.style.textDecoration = 'line-through';
+                };
+                listItem.appendChild(doneButton);
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function() {
+                    taskList.removeChild(listItem);
+                };
+                listItem.appendChild(deleteButton);
+                taskList.appendChild(listItem);
+                taskInput.value = '';
+            }
+        }
+    </script>
+    <div align='Center'>
+    <button onclick="window.location.href='index.html'">Go Back</button>
+    </div>
+</main>
+    </body>
+</html>
